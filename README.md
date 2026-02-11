@@ -1,54 +1,104 @@
-# Pairs Trading Strategy Backtest (Top 1% Quant Project)
+# 📊 Statistical Arbitrage: Pairs Trading Strategy Backtest
 
-## Project Overview
-This repository contains a polished, reproducible pairs-trading project designed for a quant portfolio or hackathon submission.
-It includes:
-- Clean, documented source code
-- Synthetic demo data generation (for reproducibility)
-- Rigorous statistical procedures (cointegration, rolling hedge ratio)
-- A production-style backtest using pandas (easy to extend to Backtrader)
-- A multi-page PDF report with figures and results
-- Guidance for improvements, risk controls, and deployment
+## 🚀 Overview
 
-## Repository Structure
+This project implements a **quantitative pairs trading strategy** using statistical arbitrage principles.
+The model identifies cointegrated stock pairs, generates trading signals based on spread deviation, and evaluates performance through backtesting.
+
+Designed as a **quant finance portfolio project**, this demonstrates real-world trading strategy development used in hedge funds and proprietary trading firms.
+
+---
+
+## 🧠 Strategy Logic
+
+### 1. Cointegration Testing
+
+* Uses Engle-Granger cointegration test
+* Identifies mean-reverting stock pairs
+* Ensures statistical relationship exists
+
+### 2. Spread Modeling
+
+* Rolling hedge ratio using OLS regression
+* Spread = Stock A − β × Stock B
+* Z-score normalization
+
+### 3. Trading Signals
+
+| Condition       | Action       |
+| --------------- | ------------ |
+| Z-score > +2    | Short spread |
+| Z-score < −2    | Long spread  |
+| Reverts to mean | Exit         |
+
+### 4. Backtesting Engine
+
+* Rolling window analysis
+* Cumulative returns tracking
+* Sharpe ratio & drawdown calculation
+
+---
+
+## 📈 Performance Metrics
+
+* Total Return
+* Annualized Return
+* Sharpe Ratio
+* Maximum Drawdown
+* Cointegration p-value
+
+---
+
+## 🛠 Tech Stack
+
+* Python
+* Pandas & NumPy
+* Statsmodels
+* Matplotlib
+* Quantitative Finance Methods
+
+---
+
+## 📊 Generated Outputs
+
+* Spread & Z-score charts
+* Trading signals
+* Cumulative returns curve
+* Automated PDF performance report
+
+---
+
+## 📂 Project Structure
+
 ```
 pairs-trading-backtest/
-├── data/                     # CSVs (synthetic demo files created automatically)
-├── src/
-│   ├── data_generator.py     # reproducible synthetic cointegrated pair
-│   ├── pairs_analysis.py     # cointegration test, hedge ratio routines
-│   ├── backtest_pd.py        # signal generation + pandas backtesting engine
-│   └── run_all.py            # demo runner: produces CSV, plots, summary JSON
-├── report_assets/            # assets used in the final report (plots, CSVs)
-├── requirements.txt
+│
+├── src/                # Strategy & backtest code
+├── data/               # Input price data
+├── report_assets/      # Generated charts & metrics
+├── Pairs_Trading_Report.pdf
 └── README.md
 ```
 
-## Quickstart (local)
-1. Create a virtual environment and install requirements:
-   ```bash
-   pip install -r requirements.txt
-   ```
+---
 
-2. Run the demo:
-   ```bash
-   python src/run_all.py
-   ```
+## 💡 Future Improvements
 
-3. Generated outputs (plots, CSVs, summary) will be written to `report_assets/`.
-   Use those to craft your PDF report or run deeper analyses.
+* Transaction cost modeling
+* Live market data integration (NSE/NYSE)
+* Portfolio-level statistical arbitrage
+* Machine learning-based pair selection
+* Deployment for live trading
 
-## How this is top-1%
-- Statistically principled: cointegration tests + rolling hedge ratio rather than naive spread
-- Reproducible: synthetic data generator with seed + clear data contracts (CSV column names)
-- Extendable: clear separation between data, analysis, and backtest
-- Report-ready: automated generation of figures and JSON summary for reproducible reporting
+---
 
-## Next steps & research ideas
-- Add transaction costs, slippage, and realistic execution (limit orders)
-- Spread normalization using variance targeting
-- Walk-forward cross-validation and parameter optimization
-- Extend to portfolios (statistical arbitrage with N assets) using PCA/cointegration clustering
+## 👨‍💻 Author
 
-## Contact
-For a polished PDF and a GitHub repo ready for submission, contact the author.
+**Paavan Fatepuria**
+Aspiring Quant Developer | Data Science | Trading Systems
+
+---
+
+## ⭐ If you found this interesting
+
+Star the repo — helps visibility!
