@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+report_assets/*.csv
+report_assets/*.png
